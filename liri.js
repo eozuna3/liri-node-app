@@ -39,17 +39,12 @@ switch (commands) {
       },
       function (error) {
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request) {
-          // The request was made but no response was received
-          // `error.request` is an object that comes back with details pertaining to the error that occurred.
           console.log(error.request);
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
         }
         console.log(error.config);
@@ -59,11 +54,51 @@ switch (commands) {
 
   //  "Movie-this" command section of the code
   case "movie-this":
-      var movieTitle = "Mr Nobody";
-      var movieURL = "";
+    var movieTitle = "Mr. Nobody";
 
-      console.log(process.argv[3]);
-      break;
+    if (process.argv[3] !== undefined) {
+      movieTitle = "";
+      for (let index = 3; index < process.argv.length; index++) {
+        if (movieTitle === "") {
+          movieTitle = process.argv[index];
+        } else {
+          movieTitle = movieTitle + "+" + process.argv[index];
+        };
+      };
+    };
+
+    // Create URL for Axios API call to OMDB API
+    var movieURL = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy"
+    
+    // Run a request with axios to the OMDB API with the movie specified
+    axios.get(movieURL).then(
+      function (response) {
+        console.log(response.data);
+        console.log("Movie Title -- " + response.data.Title);
+        console.log("Movie Release Year -- " + response.data.Year);
+        console.log("Movie IMDB Rating -- " + response.data.Ratings[0].Value);
+        console.log("Movie Rotten Tomatoes Rating -- " + response.data.Ratings[1].Value);
+        console.log("Movie was produced in " + response.data.Country);
+        console.log("Movie Language -- " + response.data.Language);
+        console.log("Movie Plot -- " + response.data.Plot);
+        console.log("Actors in the Movie -- " + response.data.Actors);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log("---------------Data---------------");
+          console.log(error.response.data);
+          console.log("---------------Status---------------");
+          console.log(error.response.status);
+          console.log("---------------Status---------------");
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
+    break;
 
   default:
     console.log("Please enter a correct command for the program to use.");
