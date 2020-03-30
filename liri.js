@@ -1,11 +1,11 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-
-//var spotify = new Spotify(keys.spotify);
-
+var Spotify = require("node-spotify-api");
 var axios = require("axios");
 var moment = require("moment");
+
+var spotify = new Spotify(keys.spotify);
 var commands = process.argv[2].toLowerCase();
 
 switch (commands) {
@@ -69,7 +69,7 @@ switch (commands) {
 
     // Create URL for Axios API call to OMDB API
     var movieURL = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy"
-    
+
     // Run a request with axios to the OMDB API with the movie specified
     axios.get(movieURL).then(
       function (response) {
@@ -97,6 +97,39 @@ switch (commands) {
           console.log("Error", error.message);
         }
         console.log(error.config);
+      });
+    break;
+
+  // Spotify-this-song section of code
+  case "spotify-this-song":
+    var songName = "The Sign";
+
+    if (process.argv[3] !== undefined) {
+      songName = "";
+      for (let index = 3; index < process.argv.length; index++) {
+        if (songName === "") {
+          songName = process.argv[index];
+        } else {
+          songName = songName + " " + process.argv[index];
+        };
+      };
+    };
+
+    spotify.search({ type: "track", query: songName })
+      .then(function (response) {
+        resultsArray = response.tracks.items;
+        for (let index = 0; index < resultsArray.length; index++) {
+          console.log("The artists for the song are -- " + resultsArray[index].album.artists[0].name);
+          console.log("The name of the song is -- " + resultsArray[index].name);
+          console.log("The album title for the song -- " + resultsArray[index].album.name);
+          if(resultsArray[index].preview_url !== null){
+          console.log("Here is a link to a 30 second preview of the song -- " + resultsArray[index].preview_url);
+          } else {
+            console.log("No preview was found for this song.")
+          };
+        };
+      }).catch(function (err) {
+        console.log(err);
       });
     break;
 
