@@ -13,18 +13,9 @@ var commands = process.argv[2].toLowerCase();
 //  Functions for each of the selection choices
 
 //  "Concert-this" function
-function concertFunction() {
-  var artist = "";
-  for (let index = 3; index < process.argv.length; index++) {
-    if (artist === "") {
-      artist = process.argv[index];
-    } else {
-      artist = artist + " " + process.argv[index];
-    };
-  };
-
+function concertFunction(performer) {
   //  Create URL to call the bands in town API
-  var concertURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+  var concertURL = "https://rest.bandsintown.com/artists/" + performer + "/events?app_id=codingbootcamp"
 
   // The use of axios.get function in order to to grab data from the Bands In Town API
   axios.get(concertURL).then(
@@ -56,23 +47,10 @@ function concertFunction() {
 };
 
 //  Movie-this function
-function movieFunction() {
-  var movieTitle = "Mr. Nobody";
-
-  if (process.argv[3] !== undefined) {
-    movieTitle = "";
-    for (let index = 3; index < process.argv.length; index++) {
-      if (movieTitle === "") {
-        movieTitle = process.argv[index];
-      } else {
-        movieTitle = movieTitle + "+" + process.argv[index];
-      };
-    };
-  };
-  console.log(movieTitle);
+function movieFunction(title) {
 
   // Create URL for Axios API call to OMDB API
-  var movieURL = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy"
+  var movieURL = "http://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy"
 
   // Run a request with axios to the OMDB API with the movie specified
   axios.get(movieURL).then(
@@ -104,21 +82,9 @@ function movieFunction() {
 };
 
 //  Spotify-this function
-function spotifyFunction() {
-  var songName = "The Sign";
-
-  if (process.argv[3] !== undefined) {
-    songName = "";
-    for (let index = 3; index < process.argv.length; index++) {
-      if (songName === "") {
-        songName = process.argv[index];
-      } else {
-        songName = songName + " " + process.argv[index];
-      };
-    };
-  };
-
-  spotify.search({ type: "track", query: songName })
+function spotifyFunction(song) {
+  //  Node-spotify-api call
+  spotify.search({ type: "track", query: song })
     .then(function (response) {
       resultsArray = response.tracks.items;
       for (let index = 0; index < resultsArray.length; index++) {
@@ -138,17 +104,49 @@ function spotifyFunction() {
 
 switch (commands) {
   case "concert-this":
-    concertFunction();
+    var artist = "";
+    for (let index = 3; index < process.argv.length; index++) {
+      if (artist === "") {
+        artist = process.argv[index];
+      } else {
+        artist = artist + " " + process.argv[index];
+      };
+    };
+    concertFunction(artist);
     break;
 
   //  "Movie-this" command section of the code
   case "movie-this":
-    movieFunction();
+    var movieTitle = "Mr. Nobody";
+
+    if (process.argv[3] !== undefined) {
+      movieTitle = "";
+      for (let index = 3; index < process.argv.length; index++) {
+        if (movieTitle === "") {
+          movieTitle = process.argv[index];
+        } else {
+          movieTitle = movieTitle + "+" + process.argv[index];
+        };
+      };
+    };
+    movieFunction(movieTitle);
     break;
 
   // Spotify-this-song section of code
   case "spotify-this-song":
-    spotifyFunction();
+    var songName = "The Sign";
+
+    if (process.argv[3] !== undefined) {
+      songName = "";
+      for (let index = 3; index < process.argv.length; index++) {
+        if (songName === "") {
+          songName = process.argv[index];
+        } else {
+          songName = songName + " " + process.argv[index];
+        };
+      };
+    };
+    spotifyFunction(songName);
     break;
 
   case "do-what-it-says":
@@ -166,6 +164,19 @@ switch (commands) {
 
       // We will then re-display the content as an array for later use.
       console.log(dataArr);
+      switch (dataArr[0]){
+        case "concert-this":
+          concertFunction(dataArr[1]);
+          break;
+        
+        case "movie-this":
+          movieFunction(dataArr[1]);
+          break;
+        
+        case "spotify-this-song":
+          spotifyFunction(dataArr[1]);
+          break;
+      };
     });
     break;
 
