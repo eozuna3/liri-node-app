@@ -15,3 +15,10 @@ Next a switch statement is used to determine which function to call based on the
 Before you can start to use the app you will need to install a few of the modules listed below.  To install each of the modules, type in the code below on the command line for each module replacing "module name" with the actual name of the module.
 
 `$ npm install <Module Name>`
+
+Here are list of modules you need and links to each to reference to:
+* [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
+* [Axios](https://www.npmjs.com/package/axios) - You will use this module to grab data from the [OMDB API](http://www.omdbapi.com/) and the [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
+
+* [Moment](https://www.npmjs.com/package/moment)
+* [DotEnv](https://www.npmjs.com/package/dotenv)
