@@ -22,3 +22,25 @@ Here are list of modules you need and links to each to reference to:
 
 * [Moment](https://www.npmjs.com/package/moment)
 * [DotEnv](https://www.npmjs.com/package/dotenv)
+
+### Running the application
+To start the application you will need to type in the following code into the command line terminal.
+
+`$ node liri.js <command-selection> <artist name/song name/movie name here>`
+
+The `<command-selection>` choices are as follows
+- `concert-this`
+- `spotify-this-song`
+- `movie-this`
+- `do-what-it-says`
+
+1. `concert-this` command uses the given artists name that follows the command selection, and then performs an API call to the Bands in Town API.  It then retrieves information about upcoming concerts for the given artist and then outputs to the terminal 
+
+- Name of the venue
+- Venue location
+- Date of the Event (use moment to format this as "MM/DD/YYYY")
+
+
+
+
+
