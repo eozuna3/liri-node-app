@@ -7,7 +7,7 @@ var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
 var spotify = new Spotify(keys.spotify);
-var commands = process.argv[2].toLowerCase();
+var commands = process.argv[2];
 
 //  Functions for each of the selection choices
 
@@ -103,7 +103,19 @@ function spotifyFunction(song) {
 
 switch (commands) {
   case "concert-this":
-    var artist = "";
+    var artist = "metallica";
+
+    if (process.argv[3] !== undefined) {
+      artist = "";
+      for (let index = 3; index < process.argv.length; index++) {
+        if (artist === "") {
+          artist = process.argv[index];
+        } else {
+          artist = artist + "+" + process.argv[index];
+        };
+      };
+    };
+
     for (let index = 3; index < process.argv.length; index++) {
       if (artist === "") {
         artist = process.argv[index];
