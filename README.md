@@ -11,4 +11,7 @@ Next a series of 3 functions were created to use the node modules along with the
 Next a switch statement is used to determine which function to call based on the first argument passed from the command line.  The last case of the switch statement involves using the node file system module to pull information from a text file and then use the information from the text file as arguments for a 2nd switch statement which will call one of the previous functions.
 
 ## Instructions for use of the application
+### Before using the app
+Before you can start to use the app you will need to install a few of the modules listed below.  To install each of the modules, type in the code below on the command line for each module replacing "module name" with the actual name of the module.
 
+`$ npm install <Module Name>`
