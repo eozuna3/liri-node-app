@@ -28,17 +28,36 @@ To start the application you will need to type in the following code into the co
 
 `$ node liri.js <command-selection> <artist name/song name/movie name here>`
 
-The `<command-selection>` choices are as follows
+The `<command-selection>` choices are as follows:
 - `concert-this`
 - `spotify-this-song`
 - `movie-this`
 - `do-what-it-says`
 
-1. `concert-this` command uses the given artists name that follows the command selection, and then performs an API call to the Bands in Town API.  It then retrieves information about upcoming concerts for the given artist and then outputs to the terminal 
+The `concert-this` command uses the given artists name that follows the command selection, and then performs an API call to the Bands in Town API.  It then retrieves information about upcoming concerts for the given artist and then outputs to the terminal 
 
-- Name of the venue
-- Venue location
-- Date of the Event (use moment to format this as "MM/DD/YYYY")
+  - Name of the venue
+  - Venue location
+  - Date of the Event
+
+The `spotify-this-song` command uses the given songs title that follows the command selection, and then performs an API call to the Spotify API.  It retrieves the information about the song from Spotify and then outputs to the terminal
+
+  - The Artist(s) that performed the song
+  - The song's name
+  - A preview link of the song from Spotify
+  - The album that the song is from
+
+  The `movie-this` command uses the given movie title that follows the command selection, and then performs an API call to the OMDB API.  It retrieves the information about the movie from the OMDB site and the outputs to the terminal
+
+    - Title of the movie.
+    - Year the movie came out.
+    - IMDB Rating of the movie.
+    - Rotten Tomatoes Rating of the movie.
+    - Country where the movie was produced.
+    - Language of the movie.
+    - Plot of the movie.
+    - Actors in the movie.
+
 
 
 
