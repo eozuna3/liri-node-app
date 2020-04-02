@@ -6,7 +6,6 @@ var Spotify = require("node-spotify-api");
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
-
 var spotify = new Spotify(keys.spotify);
 var commands = process.argv[2].toLowerCase();
 
