@@ -1,7 +1,7 @@
 # liri-node-app (First node application)
 
 ### Overview
-This application is a command line node app that takes in series of arguments and based on the first arguement passed decides what type of information to return.  The app uses the rest of the arguments passed to send requests to several node modules to retrieve the required information.  This application is my first use of node with command-line interface.
+This application is a command line node app that takes in series of arguments and based on the first arguement passed decides what type of information to return.  The app uses the rest of the arguments passed to send requests to several node modules to retrieve the required information.  This application is my first use of node with command-line interface.  I was the sole creator of this application.
 
 ### How the application is organized
 The first part of application involves requiring access to all of the previously installed modules for use in the application along with creating a global variable which is assigned the value of the first argument passed in command line.  
@@ -90,6 +90,10 @@ The `movie-this` command uses the given movie title that follows the command sel
   ![Image of movie-this screenshot](images/mt-liri.png)
 
 The `do-what-it-says` command uses the node file system to pull information placed in a random.txt file.  The information place in this file is one of the other command selections followed by the appropriate song/movie/artist selection.  Based on this information in random.txt file it excutes one of the other commands and outputs the appropriate information to the terminal.
+
+  `do-what-it-says` example: `$ node liri.js do-what-it-says`
+
+  ![Image of do-what-it-say screenshot](images/dwis-liri.png)
 
 
 ## Links

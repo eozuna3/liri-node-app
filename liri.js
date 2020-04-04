@@ -170,13 +170,9 @@ switch (commands) {
         return console.log(error);
       }
 
-      // We will then print the contents of data
-      console.log(data);
-      // Then split it by commas (to make it more readable)
+      //  Then split it by commas into an array to use
       var dataArr = data.split(",");
-
-      // We will then re-display the content as an array for later use.
-      console.log(dataArr);
+      
       switch (dataArr[0]){
         case "concert-this":
           concertFunction(dataArr[1]);
