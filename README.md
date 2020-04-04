@@ -37,7 +37,7 @@ To start the application you will need to type in the following code into the co
 
 `$ node liri.js <command-selection> <artist name/song name/movie name here>`
 
-#### Command Selections
+#### What are the Command Selections
 The `<command-selection>` choices are as follows:
   - `concert-this`
   - `spotify-this-song`
@@ -49,15 +49,16 @@ The `<command-selection>` choices are as follows:
   ![Image of first screenshot](images/liri1.png)
 
 
-
-
+#### How to use command selections along with the other arguements passed
 The `concert-this` command uses the given artists name that follows the command selection, and then performs an API call to the Bands in Town API.  It then retrieves information about upcoming concerts for the given artist and then outputs to the terminal 
 
   - Name of the venue
   - Venue location
   - Date of the 
   
-`concert-this`example: `$ node liri.js concert-this guns and roses`
+  `concert-this`example: `$ node liri.js concert-this guns and roses`
+
+  ![Image of concert-this screenshot](images/ct-liri.png)
 
 
 
@@ -70,19 +71,27 @@ The `spotify-this-song` command uses the given songs title that follows the comm
   
   `spotify-this-song`example: `$ node liri.js spotify-this-song thunderstruck`
 
+  ![Image of spotify-this-song screenshot](images/sts-liri.png)
 
-  The `movie-this` command uses the given movie title that follows the command selection, and then performs an API call to the OMDB API.  It retrieves the information about the movie from the OMDB site and the outputs to the terminal
 
-    - Title of the movie.
-    - Year the movie came out.
-    - IMDB Rating of the movie.
-    - Rotten Tomatoes Rating of the movie.
-    - Country where the movie was produced.
-    - Language of the movie.
-    - Plot of the movie.
-    - Actors in the movie.
+The `movie-this` command uses the given movie title that follows the command selection, and then performs an API call to the OMDB API.  It retrieves the information about the movie from the OMDB site and the outputs to the terminal
 
-`movie-this`example: `$ node liri.js movie-this gone with the wind`
+  - Title of the movie.
+  - Year the movie came out.
+  - IMDB Rating of the movie.
+  - Rotten Tomatoes Rating of the movie.
+  - Country where the movie was produced.
+  - Language of the movie.
+  - Plot of the movie.
+  - Actors in the movie
 
+  `movie-this` example: `$ node liri.js movie-this gone with the wind`
+
+  ![Image of movie-this screenshot](images/mt-liri.png)
 
 The `do-what-it-says` command uses the node file system to pull information placed in a random.txt file.  The information place in this file is one of the other command selections followed by the appropriate song/movie/artist selection.  Based on this information in random.txt file it excutes one of the other commands and outputs the appropriate information to the terminal.
+
+
+## Links
+1.  Link to git hub repository for this app:  [Github Link](https://github.com/eozuna3/liri-node-app/blob/master/liri.js)
+2.  

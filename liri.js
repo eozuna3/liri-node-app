@@ -25,9 +25,13 @@ function concertFunction(performer) {
           var eventDate = moment(response.data[index].datetime);
           console.log(artist + " will be playing at " + response.data[index].venue.name + ", which is located in " + response.data[index].venue.city + ", " + response.data[index].venue.region + ", " + response.data[index].venue.country + ".");
           console.log("The concert is scheduled for " + eventDate.format("MM/DD/YYYY") + ".");
+          console.log("----------------------------------------------------------------------");
+          console.log("");
         };
       } else {
-        console.log("There were no event dates found for this artist.")
+        console.log("There were no event dates found for this artist.");
+        console.log("----------------------------------------------------------------------");
+        console.log("");
       };
     },
     function (error) {
@@ -62,6 +66,8 @@ function movieFunction(title) {
       console.log("Movie Language -- " + response.data.Language);
       console.log("Movie Plot -- " + response.data.Plot);
       console.log("Actors in the Movie -- " + response.data.Actors);
+      console.log("----------------------------------------------------------------------");
+      console.log("");
     })
     .catch(function (error) {
       if (error.response) {
@@ -85,15 +91,19 @@ function spotifyFunction(song) {
   //  Node-spotify-api call
   spotify.search({ type: "track", query: song })
     .then(function (response) {
-      resultsArray = response.tracks.items;
+      var resultsArray = response.tracks.items;
       for (let index = 0; index < resultsArray.length; index++) {
         console.log("The artists for the song are -- " + resultsArray[index].album.artists[0].name);
         console.log("The name of the song is -- " + resultsArray[index].name);
         console.log("The album title for the song -- " + resultsArray[index].album.name);
         if (resultsArray[index].preview_url !== null) {
           console.log("Here is a link to a 30 second preview of the song -- " + resultsArray[index].preview_url);
+          console.log("----------------------------------------------------------------------");
+          console.log("");
         } else {
-          console.log("No preview was found for this song.")
+          console.log("No preview was found for this song.");
+          console.log("----------------------------------------------------------------------");
+          console.log("");
         };
       };
     }).catch(function (err) {
@@ -104,23 +114,15 @@ function spotifyFunction(song) {
 switch (commands) {
   case "concert-this":
     var artist = "metallica";
-
+    
     if (process.argv[3] !== undefined) {
       artist = "";
       for (let index = 3; index < process.argv.length; index++) {
         if (artist === "") {
           artist = process.argv[index];
         } else {
-          artist = artist + "+" + process.argv[index];
+          artist = artist + " " + process.argv[index];
         };
-      };
-    };
-
-    for (let index = 3; index < process.argv.length; index++) {
-      if (artist === "") {
-        artist = process.argv[index];
-      } else {
-        artist = artist + " " + process.argv[index];
       };
     };
     concertFunction(artist);
