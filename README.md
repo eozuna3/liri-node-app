@@ -96,6 +96,7 @@ The `do-what-it-says` command uses the node file system to pull information plac
   ![Image of do-what-it-say screenshot](images/dwis-liri.png)
 
 
-## Links
+## Links associated with the application
 1.  Link to git hub repository for this app:  [Github Link](https://github.com/eozuna3/liri-node-app/blob/master/liri.js)
-2.  
+2. Here is one of 2 links to videos showing how the application functions: [Liri-App-Part1](videos/Liri-App-Part1.mp4)
+3. Here is part 2 of the videos showing how the application functions: [Liri-App-Part2](videos/Liri-App-Part1.mp4)
