@@ -1,12 +1,12 @@
 # liri-node-app (First node application)
 
 ### Overview
-This application is a command line node app that takes in series of arguments and based on the first arguement passed decides what type of information to return.  The app uses the rest of the arguments passed to send requests to several node modules to retrieve the required information.  This application is my first use of node with command-line interface.  I was the sole creator of this application.
+This application is a command line node app that takes in a series of arguments, and based on the first arguement passed decides what type of information to return.  The app uses the rest of the arguments passed to send requests to several node modules to retrieve the required information.  This application is my first use of node with command-line interface.  I was the sole creator of this application.
 
 ### How the application is organized
-The first part of application involves requiring access to all of the previously installed modules for use in the application along with creating a global variable which is assigned the value of the first argument passed in command line.  
+The first part of the application involves requiring access to all of the previously installed modules for use in the application.  It also includes creating a global variable which is assigned the value of the first argument passed in the command line.  
 
-Next a series of 3 functions were created to use the node modules along with the remaining command line arguments to perform API calls and retrieve the required information.  The functions also renders the returned information to the terminal window.  The first function performs a Bands in Town API call, the second function performs an OMDB API call, and the final function performs a Spotify API call.
+Next a series of 3 functions were created to utilize node modules along with the remaining command line arguments to perform API calls and retrieve the required information.  The functions also render the returned information to the terminal window.  The first function performs a Bands in Town API call, the second function performs an OMDB API call, and the final function performs a Spotify API call.
 
 Next a switch statement is used to determine which function to call based on the first argument passed from the command line.  The last case of the switch statement involves using the node file system module to pull information from a text file and then use the information from the text file as arguments for a 2nd switch statement which will call one of the previous functions.
 
@@ -25,7 +25,7 @@ Before you can start to use the app you will need to install a few of the module
 
 `$ npm install <Module Name>`
 
-Here are list of modules you need and links to each to reference to:
+Here is the list of modules you need and links to each to use a reference:
 * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
 * [Axios](https://www.npmjs.com/package/axios) - You will use this module to grab data from the [OMDB API](http://www.omdbapi.com/) and the [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
 
@@ -44,13 +44,13 @@ The `<command-selection>` choices are as follows:
   - `movie-this`
   - `do-what-it-says`
 
-  If no command selection is given or a command is given that is not one  of the above for then a generic response is output to the terminal as noted below in the screen shot:
+  If no command selection is given or a command is given that is not one of the above, then a generic response is output to the terminal as noted below in the screen shot:
 
   ![Image of first screenshot](images/liri1.png)
 
 
 #### How to use command selections along with the other arguements passed
-The `concert-this` command uses the given artists name that follows the command selection, and then performs an API call to the Bands in Town API.  It then retrieves information about upcoming concerts for the given artist and then outputs to the terminal 
+The `concert-this` command uses the given artists name that follows the command selection, and then performs an API call to the Bands in Town API.  It then retrieves information about upcoming concerts for the given artist and then outputs this information to the terminal 
 
   - Name of the venue
   - Venue location
@@ -62,7 +62,7 @@ The `concert-this` command uses the given artists name that follows the command 
 
 
 
-The `spotify-this-song` command uses the given songs title that follows the command selection, and then performs an API call to the Spotify API.  It retrieves the information about the song from Spotify and then outputs to the terminal
+The `spotify-this-song` command uses the given songs title that follows the command selection, and then performs an API call to the Spotify API.  It retrieves the information about the song from Spotify and then outputs that informatino to the terminal
 
   - The Artist(s) that performed the song
   - The song's name
@@ -74,7 +74,7 @@ The `spotify-this-song` command uses the given songs title that follows the comm
   ![Image of spotify-this-song screenshot](images/sts-liri.png)
 
 
-The `movie-this` command uses the given movie title that follows the command selection, and then performs an API call to the OMDB API.  It retrieves the information about the movie from the OMDB site and the outputs to the terminal
+The `movie-this` command uses the given movie title that follows the command selection, and then performs an API call to the OMDB API.  It retrieves the information about the movie from the OMDB site and then outputs that information to the terminal
 
   - Title of the movie.
   - Year the movie came out.
